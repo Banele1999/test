@@ -1,7 +1,7 @@
 var express = require("express");
 const router = express.Router();
 var connection = require('../config/connection');
-
+const bcrypt = require('bcrypt')
 router.post("/submit_score", (req, res) => {
     var novality = req.body.novality * 0.15;
     var usefulness = req.body.usefulness * 0.20;

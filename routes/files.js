@@ -205,6 +205,7 @@ router.post('/judge/registration', (req, res) => {
                 if (error) {
                     console.log(error)
                 } else {
+                    
                     res.json({
                         success: true, results,
                         message: "successfully registered"

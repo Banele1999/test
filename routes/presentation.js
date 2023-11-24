@@ -114,7 +114,7 @@ router.get('/get_all_results', (req, res) => {
 router.post('/register_judges', (req, res) => {
 
     var sql_check_email = 'select * from judge where email =?'
-    connection.query(sql_check_email, req.body.email, (err, results) => {
+    connection.query(sql_check_email, req.body.email, async(err, results) => {
         if (err) {
             console.log(err)
         }
@@ -125,7 +125,8 @@ router.post('/register_judges', (req, res) => {
             })
         }
         else {
-            var register_body = { judge_name: req.body.judge_name, judge_surname: req.body.judge_surname, email: req.body.email, company_name: req.body.company_name, password: req.body.password, Admin_id: req.body.Admin_id }
+            let hashedPassword = await bcrypt.hash(req.body.password, 8);
+            var register_body = { judge_name: req.body.judge_name, judge_surname: req.body.judge_surname, email: req.body.email, company_name: req.body.company_name, password:hashedPassword , Admin_id: req.body.Admin_id }
             connection.query('INSERT INTO judge SET ?', register_body, (err, results) => {
                 if (err) {
                     console.log(err);

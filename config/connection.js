@@ -10,9 +10,9 @@ var mysqlConnection = mysql.createConnection({
 
 var mysqlConnection = mysql.createConnection({
     host: "sql8.freemysqlhosting.net",
-    user: "sql8664506",
-    password: 'wMsRHw59gF',
-    database: "sql8664506",
+    user: "sql8669541",
+    password: 'EdvBgRv8sW',
+    database: "sql8669541",
     port: '3306'
 })
 
